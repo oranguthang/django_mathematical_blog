@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Contact{% endblock %}
+
+{% block introheader %}
+    <header class="intro-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Contact</h1>
+                        <hr class="small">
+                        <span class="subheading">Contact with administration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+  <h1>Contact</h1>
+  <p>Your letter has been sent! Thank you for your interest.</p>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load addstyle %}
+
+{% block title %}Contact{% endblock %}
+
+{% block introheader %}
+    <header class="intro-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Contact</h1>
+                        <hr class="small">
+                        <span class="subheading">Contact with administration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+
+<h1>Contact</h1>
+<p>Please fill in the form below to contact us.<br>
+We will back to you as soon as we can. Thank you!</p>
+<form action="." method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="submit-link-row">{{ field.label_tag }} <br> {{ field|addstyle:"form-control" }}</div>
+      {% if form.errors %}
+        {% for error in field.errors %}
+          <div class="alert alert-dismissible alert-danger">
+            <strong>{{ error|escape }}</strong> Change a few things up and try submitting again.
+          </div>
+          {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+        {% empty %}
+          <br>
+        {% endfor %}
+      {% else %}
+        {% if field.help_text %}
+          <p class="help">{{ field.help_text|safe }}</p>
+        {% else %}
+          <br>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <p><input class="btn btn-primary" type="submit" value="Submit"></p>
+  </form>
+{% endblock %}
